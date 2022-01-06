@@ -1,6 +1,6 @@
 import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLocalTimezone, globalSearch } from "@app/actions";
+import { toggleLocalTimezone, searchShows } from "@app/actions";
 
 import {
   Button,
@@ -12,6 +12,7 @@ import {
   NavDropdown,
 } from "react-bootstrap";
 import { FaPhotoVideo } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 const MainNavbar = () => {
   const dispatch = useDispatch();
@@ -20,7 +21,12 @@ const MainNavbar = () => {
   const inputEl = useRef(null);
 
   const search = () => {
-    dispatch(globalSearch(inputEl.current.value));
+    if (inputEl.current.value) {
+      dispatch(searchShows(inputEl.current.value));
+    } else {
+      toast.info("Search input cannot be empty!");
+      inputEl.current.focus();
+    }
   };
 
   return (

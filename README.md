@@ -2,6 +2,9 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Preview app deployed on Firebase:
+https://tv-maze-react.web.app/
+
 ## Available Scripts
 
 In the project directory, you can run:

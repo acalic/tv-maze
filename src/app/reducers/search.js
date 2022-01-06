@@ -1,8 +1,8 @@
 const initialUserState = {
-  globalSearch: [
+  searchShows: [
     {
-      searchKeyword: [],
-      searchResult: [],
+      searchKeyword: "",
+      searchResults: [],
     },
   ],
 };
@@ -11,30 +11,20 @@ const favoritesReducer = (state = initialUserState, action) => {
   const newState = Object.assign({}, state);
 
   switch (action.type) {
-    case "GLOBAL_SEARCH":
-      //let payload = Object.assign({}, action.payload);
-      let currentSearchKeyword = action.payload;
-
-      // TODO fetch api call...
-      let currentSearchResult = "prazno...";
-      console.log(action.payload);
-
+    case "SEARCH_SHOWS":
       return {
         ...state,
-        globalSearch: [
-          ...state.globalSearch,
+        searchShows: [
+          ...state.searchShows,
           {
-            searchKeyword: [{ ...state.searchKeyword, currentSearchKeyword }],
-            searchResult: [{ ...state.searchResult, currentSearchResult }],
+            searchKeyword: action.payload.searchKeyword,
+            searchResults: action.payload.searchResults,
           },
         ],
       };
-      break;
     default:
       break;
   }
-
-  // return the modified state
   return newState;
 };
 
