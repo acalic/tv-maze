@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { toggleLocalTimezone } from "@app/actions";
+import { toggleLocalTimezone, globalSearch } from "@app/actions";
 
 import {
   Button,
@@ -16,6 +16,12 @@ import { FaPhotoVideo } from "react-icons/fa";
 const MainNavbar = () => {
   const dispatch = useDispatch();
   const localTimezone = useSelector((state) => state.timezone.localTimezone);
+
+  const inputEl = useRef(null);
+
+  const search = () => {
+    dispatch(globalSearch(inputEl.current.value));
+  };
 
   return (
     <Navbar bg="dark" variant="dark" expand="lg">
@@ -50,8 +56,11 @@ const MainNavbar = () => {
               placeholder="Search"
               className="me-2"
               aria-label="Search"
+              ref={inputEl}
             />
-            <Button variant="outline-primary">Search</Button>
+            <Button variant="outline-primary" onClick={() => search()}>
+              Search
+            </Button>
           </Form>
           {/* <Navbar.Text>
             Signed in as: <a href="#login">Mark Otto</a>

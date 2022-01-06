@@ -19,6 +19,17 @@ export const addFavorite = (payload) => {
   };
 };
 
+export const globalSearch = (payload) => {
+  return function (dispatch) {
+    dispatch({
+      type: "GLOBAL_SEARCH",
+      payload,
+    });
+    //console.log(payload);
+    //toast.success("Timezone changed");
+  };
+};
+
 export const removeFavorite = (payload) => {
   return function (dispatch) {
     dispatch({

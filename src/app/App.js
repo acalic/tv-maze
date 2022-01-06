@@ -2,13 +2,13 @@ import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import { Container } from "react-bootstrap";
 import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 //import { AnimatedSwitch } from "react-router-transition";
 
 import MainNavbar from "@components/MainNavbar";
 import routes from "./routes";
 
+import "react-toastify/dist/ReactToastify.min.css";
 import "../styles/index.scss";
 
 const App = () => (
