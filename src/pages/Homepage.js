@@ -60,13 +60,13 @@ const Homepage = () => {
     <>
       <h2>Favorites</h2>
       {showsFavorites && showsFavorites.length ? (
-        <ShowsList shows={showsFavorites} />
+        <ShowsList shows={showsFavorites} isFavoritesList />
       ) : (
-        <Alert variant="light d-inline-flex align-items-center mb-5">
+        <Alert variant="light d-inline-flex align-items-center mb-3">
           <FaInfoCircle></FaInfoCircle>
           <span className="px-2">
             No favorites added yet, please click on the star icon next to the
-            show title to add one!
+            show title to add it to the list!
           </span>
         </Alert>
       )}

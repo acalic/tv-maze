@@ -6,8 +6,6 @@ import { toast } from "react-toastify";
       type: "TOGGLE_FAVORITE_SHOW",
       payload,
     });
-    toast.success("MY SUCCESS");
-    console.log(payload);
   };
 }; */
 

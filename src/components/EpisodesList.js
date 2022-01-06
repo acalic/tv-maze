@@ -19,7 +19,7 @@ const EpisodesList = ({ episodes }) => {
                 <Col>
                   <div className="text-muted mb-3">
                     Aired: {dateTimeFormat(episode.airstamp, localTimezone)}
-                    <Badge size="sm" bg="info" className="mt-3">
+                    <Badge size="sm" bg="light" className="mt-3 text-dark">
                       Local timezone: {localTimezone ? "ON" : "OFF"}
                     </Badge>
                   </div>

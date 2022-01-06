@@ -91,7 +91,7 @@ const ShowDetails = () => {
         </div>
         <div className="mt-3">
           <Button
-            variant={isShowInFavorites() ? "outline-dark" : "outline-warning"}
+            variant="dark"
             onClick={() =>
               dispatch(
                 isShowInFavorites()

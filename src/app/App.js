@@ -15,7 +15,7 @@ const App = () => (
   <Router>
     <MainNavbar />
     <Container fluid={false}>
-      <ToastContainer autoClose={3000} />
+      <ToastContainer autoClose={3000} theme="dark" />
       <Switch>
         {/* <AnimatedSwitch
           atEnter={{ opacity: 0 }}
