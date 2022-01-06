@@ -1,0 +1,25 @@
+$greyLight: #cbcbcb;
+$greyDark: #6c757d;
+
+/* Bootstrap theme overrides */
+
+$primary: #00ff00;
+$secondary: #8f5325;
+$success: #3e8d63;
+$info: #7854e4;
+$warning: #b8c924;
+$danger: #d62518;
+$light: #f8f9fa;
+$dark: #212529;
+
+// this is used to map colors. change accordingly.
+$theme-colors: (
+  primary: $primary,
+  //secondary: $secondary,
+  success: $success,
+  info: $info,
+  warning: $warning,
+  danger: $danger,
+  light: $light,
+  dark: $dark,
+);
