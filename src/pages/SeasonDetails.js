@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { apiUrl } from "@utils/globals";
 import { Figure, Row, Col, Image } from "react-bootstrap";
+import { toast } from "react-toastify";
 
 import EpisodesList from "@components/EpisodesList";
 import { removeHTML } from "@utils/functions";
@@ -21,7 +22,7 @@ const SeasonDetails = () => {
         setSeasonDetails(data);
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error.message, { autoClose: false });
       });
   };
 
@@ -36,7 +37,7 @@ const SeasonDetails = () => {
         }
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error.message, { autoClose: false });
       });
   };
 

@@ -4,6 +4,7 @@ import { useParams } from "react-router-dom";
 import { apiUrl } from "@utils/globals";
 import { Row, Button, Col, Image } from "react-bootstrap";
 import { FaStar } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import { addFavorite, removeFavorite } from "@app/actions";
 
@@ -34,7 +35,7 @@ const ShowDetails = () => {
         }
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error.message, { autoClose: false });
       });
   };
 
@@ -49,7 +50,7 @@ const ShowDetails = () => {
         }
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error.message, { autoClose: false });
       });
   };
 

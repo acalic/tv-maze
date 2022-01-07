@@ -3,6 +3,7 @@ import { useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 import { Pagination, Alert } from "react-bootstrap";
 import { FaInfoCircle } from "react-icons/fa";
+import { toast } from "react-toastify";
 
 import { apiUrl } from "@utils/globals";
 import ShowsList from "@components/ShowsList";
@@ -40,7 +41,7 @@ const Homepage = () => {
         }
       })
       .catch((error) => {
-        alert(error);
+        toast.error(error.message, { autoClose: false });
       });
   };
 
