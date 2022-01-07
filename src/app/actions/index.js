@@ -46,12 +46,17 @@ export const searchShows = (payload) => {
         return response.json();
       })
       .then((data) => {
-        if (data.length) {
+        if (data) {
+          let shows = data.map((item) => item.show); // Extract shows from result
+          let timestamp = new Date();
+          timestamp.toUTCString();
+
           dispatch({
             type: "SEARCH_SHOWS",
             payload: {
               searchKeyword: payload,
-              searchResults: data,
+              searchResults: shows,
+              timestamp: timestamp,
             },
           });
         }

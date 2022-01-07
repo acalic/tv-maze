@@ -34,7 +34,8 @@ const Show = ({ show, isFavoritesList }) => {
       {!isFavoritesList && <Card.Img variant="top" src={show?.image?.medium} />}
       <Card.Body className={"card-movie__body d-flex flex-column"}>
         <Card.Title className="d-flex justify-content-between align-items-center">
-          {show?.name} ({show?.premiered?.substr(0, 4)})
+          <span>{show?.name}</span>{" "}
+          {show?.premiered && <span>({show.premiered.substr(0, 4)})</span>}
           <Button
             variant="none"
             className="btn-favorite"

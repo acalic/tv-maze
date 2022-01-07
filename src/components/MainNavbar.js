@@ -20,7 +20,10 @@ const MainNavbar = () => {
 
   const inputEl = useRef(null);
 
-  const search = () => {
+  const search = (event) => {
+    event.preventDefault();
+    event.stopPropagation();
+
     if (inputEl.current.value) {
       dispatch(searchShows(inputEl.current.value));
     } else {
@@ -48,29 +51,22 @@ const MainNavbar = () => {
               <NavDropdown.Item onClick={() => dispatch(toggleLocalTimezone())}>
                 Toggle Local Timezone ({localTimezone ? "ON" : "OFF"})
               </NavDropdown.Item>
-              {/* <NavDropdown.Divider />
-              <NavDropdown.Item href="">
-                Separated link
-              </NavDropdown.Item> */}
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end">
-          <Form className="d-flex">
+          <Form className="d-flex" onSubmit={(event) => search(event)}>
             <FormControl
               type="search"
-              placeholder="Search"
+              placeholder="Search shows"
               className="me-2"
               aria-label="Search"
               ref={inputEl}
             />
-            <Button variant="outline-primary" onClick={() => search()}>
+            <Button variant="outline-primary" type="submit">
               Search
             </Button>
           </Form>
-          {/* <Navbar.Text>
-            Signed in as: <a href="#login">Mark Otto</a>
-          </Navbar.Text> */}
         </Navbar.Collapse>
       </Container>
     </Navbar>

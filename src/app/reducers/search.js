@@ -3,6 +3,7 @@ const initialUserState = {
     {
       searchKeyword: "",
       searchResults: [],
+      timestamp: new Date(),
     },
   ],
 };
@@ -12,6 +13,7 @@ const favoritesReducer = (state = initialUserState, action) => {
 
   switch (action.type) {
     case "SEARCH_SHOWS":
+      if (state.searchShows.length > 9) state.searchShows.shift(); // Remove oldest result
       return {
         ...state,
         searchShows: [
@@ -19,6 +21,7 @@ const favoritesReducer = (state = initialUserState, action) => {
           {
             searchKeyword: action.payload.searchKeyword,
             searchResults: action.payload.searchResults,
+            timestamp: action.payload.timestamp,
           },
         ],
       };

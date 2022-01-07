@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation } from "react-router-dom";
+import { useLocation, Link } from "react-router-dom";
 import { Pagination, Alert } from "react-bootstrap";
 import { FaInfoCircle } from "react-icons/fa";
 
@@ -15,10 +15,18 @@ const Homepage = () => {
 
   const paginationLength = 20;
 
-  const showsFavorites = useSelector((state) => state.favorites.favorites);
-
   const [shows, setShows] = useState([]);
   const [activePage, setActivePage] = useState(page | 0);
+
+  const showsFavorites = useSelector((state) => state.favorites.favorites);
+  const searchResultsAll = useSelector((state) => state.searches.searchShows);
+
+  const searchResultsLast = searchResultsAll[searchResultsAll.length - 1];
+
+  const timeNow = new Date();
+  const timeLastSearch = new Date(searchResultsLast?.timestamp);
+  const secondsBetweenLastSearch =
+    (timeNow.getTime() - timeLastSearch.getTime()) / 1000;
 
   const fetchShows = (page = 0) => {
     fetch(`${apiUrl}/shows?page=${page}`)
@@ -71,13 +79,31 @@ const Homepage = () => {
         </Alert>
       )}
 
-      <h2>All shows</h2>
+      {searchResultsLast && secondsBetweenLastSearch < 2 ? (
+        <>
+          <h2>Search results</h2>
+          {searchResultsLast.searchResults.length ? (
+            <ShowsList shows={searchResultsLast.searchResults} />
+          ) : (
+            <Alert variant="light d-inline-flex align-items-center mb-3">
+              <FaInfoCircle></FaInfoCircle>
+              <span className="px-2">
+                Sorry, search results empty! &nbsp;
+                <Link to="/">Back to all shows</Link>
+              </span>
+            </Alert>
+          )}
+        </>
+      ) : (
+        <>
+          <h2>All shows</h2>
+          <ShowsList shows={shows} />
 
-      <ShowsList shows={shows} />
-
-      <Pagination className="justify-content-center">
-        <PaginationItems length={paginationLength} />
-      </Pagination>
+          <Pagination className="justify-content-center">
+            <PaginationItems length={paginationLength} />
+          </Pagination>
+        </>
+      )}
     </>
   );
 };
