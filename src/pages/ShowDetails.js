@@ -104,7 +104,7 @@ const ShowDetails = () => {
             {isShowInFavorites() ? "Remove from favorites" : "Add to favorites"}
           </Button>
         </div>
-        <h3 className="text-light mt-5 mb-3">Seasons:</h3>
+        <h3 className="text-light mt-3 mt-sm-5 mb-3">Seasons:</h3>
         <SeasonsList seasons={showSeasons} />
       </Col>
       <Col xs={12} md={6} className="mt-md-5">

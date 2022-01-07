@@ -97,45 +97,43 @@ const MainNavbar = () => {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end mt-3 mt-lg-0">
-          <div>
-            <Form className="d-flex" onSubmit={(event) => handleSearch(event)}>
-              <FormControl
-                type="search"
-                placeholder="Show name..."
-                className="me-2"
-                aria-label="Search"
-                ref={inputEl}
-                onChange={() => handleOnSearchInputChange()}
-                onFocus={() => handleOnSearchInputFocus()}
-                onBlur={() =>
-                  setTimeout(() => {
-                    // Hacky way (timeout) to not close the SearchHistoryMenu in case an item is clicked in it! :D
-                    toggleSearchHistoryMenu(false);
-                  }, 100)
-                }
-              />
-              <Button variant="outline-primary" type="submit">
-                Search
-              </Button>
-            </Form>
-            {searchKeywords && searchKeywords.length && (
-              <ListGroup
-                className={`search-history fade ${
-                  showSearchHistory ? "show" : "hide"
-                }`}
-              >
-                {searchKeywords.reverse().map((keyword, i) => (
-                  <ListGroup.Item
-                    key={"search-history-item-" + i}
-                    onMouseOver={() => handleSearchHistoryItemHover(keyword)}
-                    onClick={() => handleSearchHistoryItemClick(keyword)}
-                  >
-                    {keyword}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            )}
-          </div>
+          <Form className="d-flex" onSubmit={(event) => handleSearch(event)}>
+            <FormControl
+              type="search"
+              placeholder="Show name..."
+              className="me-2"
+              aria-label="Search"
+              ref={inputEl}
+              onChange={() => handleOnSearchInputChange()}
+              onFocus={() => handleOnSearchInputFocus()}
+              onBlur={() =>
+                setTimeout(() => {
+                  // Hacky way (timeout) to not close the SearchHistoryMenu in case an item is clicked in it! :D
+                  toggleSearchHistoryMenu(false);
+                }, 100)
+              }
+            />
+            <Button variant="outline-primary" type="submit">
+              Search
+            </Button>
+          </Form>
+          {searchKeywords && searchKeywords.length && (
+            <ListGroup
+              className={`search-history fade ${
+                showSearchHistory ? "show" : "hide"
+              }`}
+            >
+              {searchKeywords.reverse().map((keyword, i) => (
+                <ListGroup.Item
+                  key={"search-history-item-" + i}
+                  onMouseOver={() => handleSearchHistoryItemHover(keyword)}
+                  onClick={() => handleSearchHistoryItemClick(keyword)}
+                >
+                  {keyword}
+                </ListGroup.Item>
+              ))}
+            </ListGroup>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

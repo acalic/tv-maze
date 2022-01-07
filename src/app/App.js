@@ -25,7 +25,7 @@ const App = () => (
         > */}
         {routes.map(({ path, Component }) => (
           <Route key={path} exact path={path}>
-            <div className="content p-3">
+            <div className="content py-2 py-sm-3 p-0 p-md-3">
               <Component />
             </div>
           </Route>
