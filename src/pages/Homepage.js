@@ -7,6 +7,22 @@ import { toast } from "react-toastify";
 import { apiUrl } from "@utils/globals";
 import ShowsList from "@components/ShowsList";
 
+const ShowSearchResults = (searchResultsLast) => (
+  <>
+    <h2>Search results</h2>
+    {searchResultsLast.searchResults.length ? (
+      <ShowsList shows={searchResultsLast.searchResults} />
+    ) : (
+      <Alert variant="light d-inline-flex align-items-center mb-3">
+        <span className="px-2">
+          Sorry, search results empty! &nbsp;
+          <Link to="/">Back to all shows</Link>
+        </span>
+      </Alert>
+    )}
+  </>
+);
+
 const Homepage = () => {
   const { search } = useLocation();
 
@@ -82,19 +98,7 @@ const Homepage = () => {
       )}
 
       {searchResultsLast && secondsBetweenLastSearch < 2 ? (
-        <>
-          <h2>Search results</h2>
-          {searchResultsLast.searchResults.length ? (
-            <ShowsList shows={searchResultsLast.searchResults} />
-          ) : (
-            <Alert variant="light d-inline-flex align-items-center mb-3">
-              <span className="px-2">
-                Sorry, search results empty! &nbsp;
-                <Link to="/">Back to all shows</Link>
-              </span>
-            </Alert>
-          )}
-        </>
+        <ShowSearchResults {...searchResultsLast} />
       ) : (
         <>
           <h2 className="m-0">All shows</h2>

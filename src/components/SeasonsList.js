@@ -22,7 +22,7 @@ const SeasonsList = ({ seasons }) => {
               )}
               <Button
                 href={`/seasons/${season.id}`}
-                variant="outline-info"
+                variant="primary"
                 className="mt-2"
               >
                 View episodes

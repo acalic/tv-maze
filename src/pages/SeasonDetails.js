@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { apiUrl } from "@utils/globals";
-import { Figure, Row, Col, Image } from "react-bootstrap";
+import { Figure, Row, Col, Image, Button } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import EpisodesList from "@components/EpisodesList";
@@ -9,6 +9,8 @@ import { removeHTML } from "@utils/functions";
 
 const SeasonDetails = () => {
   let { id } = useParams();
+
+  const history = useHistory();
 
   const [seasonDetails, setSeasonDetails] = useState([]);
   const [seasonEpisodes, setSeasonEpisodes] = useState([]);
@@ -50,12 +52,17 @@ const SeasonDetails = () => {
     <Row className="page-season-details">
       <Col>
         <h1>Season {seasonDetails?.number}</h1>
-        {seasonDetails?.summary && (
-          <div className="page-show-details-text mb-3">
-            {removeHTML(seasonDetails.summary)}
-          </div>
-        )}
-        <h3 className="text-light mb-3">Episodes:</h3>
+        <div className="page-show-details-text mb-3">
+          {seasonDetails?.summary ? (
+            <span>{removeHTML(seasonDetails.summary)}</span>
+          ) : (
+            <span>We don't have a summary for this season yet!</span>
+          )}
+        </div>
+        <Button variant="outline-dark" onClick={history.goBack}>
+          Back
+        </Button>
+        <h3 className="text-light mt-3 mt-sm-5 mb-3">Episodes:</h3>
         <EpisodesList episodes={seasonEpisodes} />
       </Col>
       <Col xs={12} md={6}>

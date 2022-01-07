@@ -1,0 +1,207 @@
+body {
+  background-color: $dark-01;
+}
+
+h1,
+h2,
+h3 {
+  color: #fff;
+}
+
+.alert-light {
+  background: transparent;
+  color: $greyLight;
+  font-weight: 300;
+  border: 1px solid $dark;
+
+  @include media-breakpoint-down(sm) {
+    padding: 0.5rem;
+    font-size: 0.75rem;
+
+    svg {
+      display: none;
+    }
+  }
+}
+
+.btn-favorite:focus + .btn,
+.btn:focus {
+  box-shadow: none;
+}
+
+.btn.btn-outline-dark {
+  color: $greyDark;
+}
+
+.btn-dark:hover {
+  box-shadow: 0 0 8px rgba($primary, 70%);
+}
+
+.dropdown-menu {
+  background: $dark-02;
+
+  > .dropdown-item {
+    color: $greyLight;
+
+    &:hover {
+      background: transparent;
+      transition: color 0.3s ease-in;
+      text-shadow: 0 0 16px rgba($primary, 70%);
+      color: $primary;
+    }
+  }
+}
+
+.navbar {
+  padding: 1rem 0;
+
+  .navbar-collapse {
+    &.collapsing {
+      .search-history {
+        display: none;
+      }
+    }
+  }
+}
+
+.switch-wrapper {
+  position: relative;
+
+  > div {
+    position: absolute;
+  }
+}
+
+input.form-control {
+  border: none;
+}
+
+.card-movie {
+  background: #121212;
+
+  &__body {
+    color: $greyLight;
+  }
+
+  @include media-breakpoint-down(sm) {
+    .card-title {
+      font-size: 1rem;
+    }
+    .card-text,
+    .btn {
+      font-size: 0.75rem;
+    }
+  }
+}
+
+.pagination {
+  flex-wrap: wrap;
+  .page-item .page-link {
+    border-radius: 0.25rem !important;
+  }
+
+  .page-link {
+    background: transparent;
+    color: $primary;
+    border: 0;
+  }
+  .active {
+    .page-link {
+      background: $primary;
+    }
+  }
+}
+
+.page-show-details,
+.page-season-details {
+  &-title {
+    svg {
+      font-size: 1.5rem;
+    }
+  }
+
+  &-subtitle {
+    font-size: 1rem;
+  }
+
+  &-img {
+    width: 100%;
+    padding-bottom: 1rem;
+    float: left;
+
+    @include media-breakpoint-down(sm) {
+      width: 100%;
+      float: none;
+    }
+  }
+
+  &-text {
+    color: $greyDark;
+    font-size: 1.25rem;
+    line-height: normal;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 1rem;
+    }
+  }
+}
+
+.accordion-list {
+  .accordion-item {
+    background: transparent;
+    border: 0;
+  }
+  .accordion-button {
+    background: $dark;
+    color: $greyLight;
+    text-align: center;
+    font-size: 1.125rem;
+
+    @include media-breakpoint-down(sm) {
+      font-size: 1rem;
+    }
+
+    &:focus {
+      border: 0;
+      box-shadow: none;
+    }
+
+    &::after,
+    &:not(.collapsed)::after {
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23cbcbcb'%3E%3Cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3E%3C/svg%3E");
+    }
+  }
+}
+
+.search-history {
+  position: absolute;
+  min-width: 205px;
+  top: 40px;
+  z-index: 1;
+
+  &.hide {
+    visibility: hidden;
+  }
+
+  &.show {
+    visibility: visible;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+    background: $dark-02;
+    border-color: $dark-01;
+    color: $greyLight;
+
+    &:hover {
+      transition: color 0.3s ease-in;
+      text-shadow: 0 0 16px rgba($primary, 70%);
+      color: $primary;
+    }
+  }
+}
+
+.toast-container {
+  position: fixed !important;
+  margin: 0.5rem;
+}
