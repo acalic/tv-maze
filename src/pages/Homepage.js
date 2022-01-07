@@ -22,7 +22,10 @@ const Homepage = () => {
   const showsFavorites = useSelector((state) => state.favorites.favorites);
   const searchResultsAll = useSelector((state) => state.searches.searchShows);
 
-  const searchResultsLast = searchResultsAll[searchResultsAll.length - 1];
+  const searchResultsLast =
+    searchResultsAll && searchResultsAll.length
+      ? searchResultsAll[searchResultsAll.length - 1]
+      : [];
 
   const timeNow = new Date();
   const timeLastSearch = new Date(searchResultsLast?.timestamp);
