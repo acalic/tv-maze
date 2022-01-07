@@ -25,7 +25,7 @@ const Homepage = () => {
   const searchResultsLast =
     searchResultsAll && searchResultsAll.length
       ? searchResultsAll[searchResultsAll.length - 1]
-      : [];
+      : null;
 
   const timeNow = new Date();
   const timeLastSearch = new Date(searchResultsLast?.timestamp);
@@ -83,7 +83,7 @@ const Homepage = () => {
         </Alert>
       )}
 
-      {searchResultsLast.length && secondsBetweenLastSearch < 2 ? (
+      {searchResultsLast && secondsBetweenLastSearch < 2 ? (
         <>
           <h2>Search results</h2>
           {searchResultsLast.searchResults.length ? (

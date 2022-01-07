@@ -1,11 +1,5 @@
 const initialUserState = {
-  searchShows: [
-    {
-      searchKeyword: "",
-      searchResults: [],
-      timestamp: new Date(),
-    },
-  ],
+  searchShows: [],
 };
 
 const favoritesReducer = (state = initialUserState, action) => {
