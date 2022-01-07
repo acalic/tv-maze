@@ -83,7 +83,7 @@ const Homepage = () => {
         </Alert>
       )}
 
-      {searchResultsLast && secondsBetweenLastSearch < 2 ? (
+      {searchResultsLast.length && secondsBetweenLastSearch < 2 ? (
         <>
           <h2>Search results</h2>
           {searchResultsLast.searchResults.length ? (
