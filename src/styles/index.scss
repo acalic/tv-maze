@@ -157,6 +157,7 @@ input.form-control {
 .search-history {
   position: absolute;
   min-width: 205px;
+  top: 40px;
   z-index: 1;
 
   &.hide {
