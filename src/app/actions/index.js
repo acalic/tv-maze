@@ -1,15 +1,6 @@
 import { toast } from "react-toastify";
 import { apiUrl } from "@utils/globals";
 
-/* export const toggleFavorite = (payload) => {
-  return function (dispatch) {
-    dispatch({
-      type: "TOGGLE_FAVORITE_SHOW",
-      payload,
-    });
-  };
-}; */
-
 export const addFavorite = (payload) => {
   return function (dispatch) {
     dispatch({

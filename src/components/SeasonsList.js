@@ -8,8 +8,7 @@ const SeasonsList = ({ seasons }) => {
       {seasons.map((season, i) => (
         <Accordion key={"season-" + i} className="accordion-list mb-2">
           <Accordion.Item eventKey={i}>
-            <Accordion.Header /* onClick={() => handleSeasonClick(season.id)} */
-            >
+            <Accordion.Header>
               Season {season.number} ({season.premiereDate.substr(0, 4)})
             </Accordion.Header>
             <Accordion.Body className="text-light">

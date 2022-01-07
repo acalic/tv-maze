@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useLocation, Link } from "react-router-dom";
 import { Pagination, Alert } from "react-bootstrap";
-import { FaInfoCircle } from "react-icons/fa";
 import { toast } from "react-toastify";
 
 import { apiUrl } from "@utils/globals";
@@ -75,7 +74,6 @@ const Homepage = () => {
         <ShowsList shows={showsFavorites} isFavoritesList />
       ) : (
         <Alert variant="light d-inline-flex align-items-center mb-3">
-          <FaInfoCircle></FaInfoCircle>
           <span className="px-2">
             No favorites added yet, please click on the star icon next to the
             show title to add it to the list!
@@ -90,7 +88,6 @@ const Homepage = () => {
             <ShowsList shows={searchResultsLast.searchResults} />
           ) : (
             <Alert variant="light d-inline-flex align-items-center mb-3">
-              <FaInfoCircle></FaInfoCircle>
               <span className="px-2">
                 Sorry, search results empty! &nbsp;
                 <Link to="/">Back to all shows</Link>
@@ -100,7 +97,7 @@ const Homepage = () => {
         </>
       ) : (
         <>
-          <h2>All shows</h2>
+          <h2 className="m-0">All shows</h2>
           <ShowsList shows={shows} />
 
           <Pagination className="justify-content-center">

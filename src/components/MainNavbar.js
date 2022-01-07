@@ -39,11 +39,16 @@ const MainNavbar = () => {
     }
 
     if (inputEl.current.value) {
+      if (inputEl.current.value == searchKeywords[0]) {
+        // Prevent same search
+        toast.info("Same search, please change the keyword!");
+        return;
+      }
+
       dispatch(searchShows(inputEl.current.value));
       toggleSearchHistoryMenu(false);
     } else {
       toast.info("Search input cannot be empty!");
-      inputEl.current.focus();
     }
   };
 
@@ -80,8 +85,8 @@ const MainNavbar = () => {
           <FaPhotoVideo />
           <span className="ml-3 text-white"> KenTechFlix</span>
         </Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav" />
-        <Navbar.Collapse id="basic-navbar-nav">
+        <Navbar.Toggle aria-controls="main-navbar-nav" />
+        <Navbar.Collapse id="main-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/favorites">Favorites</Nav.Link>
