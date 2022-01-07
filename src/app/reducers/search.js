@@ -7,7 +7,7 @@ const favoritesReducer = (state = initialUserState, action) => {
 
   switch (action.type) {
     case "SEARCH_SHOWS":
-      if (state.searchShows.length > 9) state.searchShows.shift(); // Remove oldest result
+      if (state.searchShows.length > 4) state.searchShows.shift(); // Remove oldest result
       return {
         ...state,
         searchShows: [

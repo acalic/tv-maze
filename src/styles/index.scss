@@ -3,7 +3,7 @@
 @import "~bootstrap/scss/bootstrap";
 
 body {
-  background-color: #0a0a0a;
+  background-color: $dark-01;
 }
 
 h1,
@@ -22,6 +22,14 @@ h3 {
 .btn-favorite:focus + .btn,
 .btn:focus {
   box-shadow: none;
+}
+
+.dropdown-menu {
+  background: $dark-02;
+
+  > .dropdown-item {
+    color: $greyLight;
+  }
 }
 
 .navbar {
@@ -79,8 +87,6 @@ input.form-control {
   }
 
   &-img {
-    /* max-height: 90vh; */
-    /* width: auto; */
     width: 100%;
     padding-bottom: 1rem;
     float: left;
@@ -121,9 +127,34 @@ input.form-control {
   }
 }
 
+.search-history {
+  position: absolute;
+  min-width: 205px;
+  z-index: 1;
+
+  &.hide {
+    visibility: hidden;
+  }
+
+  &.show {
+    visibility: visible;
+  }
+
+  .list-group-item {
+    cursor: pointer;
+    background: $dark-02;
+    border-color: $dark-01;
+    color: $greyLight;
+
+    &:hover {
+      transition: color 0.3s ease-in;
+      text-shadow: 0 0 16px rgba($primary, 70%);
+      color: $primary;
+    }
+  }
+}
+
 .toast-container {
-  //top: 5rem !important;
-  //right: 1rem !important;
   position: fixed !important;
   margin: 0.5rem;
 }
