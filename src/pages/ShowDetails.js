@@ -106,7 +106,7 @@ const ShowDetails = () => {
             {isShowInFavorites() ? "Remove from favorites" : "Add to favorites"}
           </Button>
           <Button
-            className="mx-3"
+            className="mx-2 mx-md-3"
             variant="outline-dark"
             onClick={history.goBack}
           >

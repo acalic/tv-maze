@@ -146,7 +146,6 @@ input.form-control {
   .accordion-button {
     background: $dark;
     color: $greyLight;
-    text-align: center;
     font-size: 1.125rem;
 
     @include media-breakpoint-down(sm) {
