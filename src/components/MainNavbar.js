@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { useLocation } from "react-router-dom";
 import { toggleLocalTimezone, searchShows } from "@app/actions";
 
 import {
@@ -17,10 +18,15 @@ import { toast } from "react-toastify";
 
 const MainNavbar = () => {
   const dispatch = useDispatch();
+  const location = useLocation();
+
   const localTimezone = useSelector((state) => state.timezone.localTimezone);
   const searchResultsAll = useSelector((state) => state.searches.searchShows);
 
   const [showSearchHistory, setShowSearchHistory] = useState(false);
+
+  const currentPath = location.pathname;
+  const searchEnabled = currentPath === "/" ? true : false; // We will show the search only on homepage
 
   const searchKeywords = searchResultsAll
     .filter((search) => search.searchKeyword !== "")
@@ -103,45 +109,50 @@ const MainNavbar = () => {
           </Nav>
         </Navbar.Collapse>
         <Navbar.Collapse className="justify-content-end mt-3 mt-lg-0">
-          <div className="d-md-inline-flex position-relative">
-            <Form className="d-flex" onSubmit={(event) => handleSearch(event)}>
-              <FormControl
-                type="search"
-                placeholder="Show name..."
-                className="me-2"
-                aria-label="Search"
-                ref={inputEl}
-                onChange={() => handleOnSearchInputChange()}
-                onFocus={() => handleOnSearchInputFocus()}
-                onBlur={() =>
-                  setTimeout(() => {
-                    // Hacky way (timeout) to not close the SearchHistoryMenu in case an item is clicked in it! :D
-                    toggleSearchHistoryMenu(false);
-                  }, 100)
-                }
-              />
-              <Button variant="outline-primary" type="submit">
-                Search
-              </Button>
-            </Form>
-            {searchKeywords && searchKeywords.length && (
-              <ListGroup
-                className={`search-history fade ${
-                  showSearchHistory ? "show" : "hide"
-                }`}
+          {searchEnabled && (
+            <div className="d-md-inline-flex position-relative">
+              <Form
+                className="d-flex"
+                onSubmit={(event) => handleSearch(event)}
               >
-                {searchKeywords.reverse().map((keyword, i) => (
-                  <ListGroup.Item
-                    key={"search-history-item-" + i}
-                    onMouseOver={() => handleSearchHistoryItemHover(keyword)}
-                    onClick={() => handleSearchHistoryItemClick(keyword)}
-                  >
-                    {keyword}
-                  </ListGroup.Item>
-                ))}
-              </ListGroup>
-            )}
-          </div>
+                <FormControl
+                  type="search"
+                  placeholder="Show name..."
+                  className="me-2"
+                  aria-label="Search"
+                  ref={inputEl}
+                  onChange={() => handleOnSearchInputChange()}
+                  onFocus={() => handleOnSearchInputFocus()}
+                  onBlur={() =>
+                    setTimeout(() => {
+                      // Hacky way (timeout) to not close the SearchHistoryMenu in case an item is clicked in it! :D
+                      toggleSearchHistoryMenu(false);
+                    }, 100)
+                  }
+                />
+                <Button variant="outline-primary" type="submit">
+                  Search
+                </Button>
+              </Form>
+              {searchKeywords && searchKeywords.length && (
+                <ListGroup
+                  className={`search-history fade ${
+                    showSearchHistory ? "show" : "hide"
+                  }`}
+                >
+                  {searchKeywords.reverse().map((keyword, i) => (
+                    <ListGroup.Item
+                      key={"search-history-item-" + i}
+                      onMouseOver={() => handleSearchHistoryItemHover(keyword)}
+                      onClick={() => handleSearchHistoryItemClick(keyword)}
+                    >
+                      {keyword}
+                    </ListGroup.Item>
+                  ))}
+                </ListGroup>
+              )}
+            </div>
+          )}
         </Navbar.Collapse>
       </Container>
     </Navbar>

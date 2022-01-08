@@ -1,27 +1,13 @@
 import React, { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
-import { useLocation, Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { Pagination, Alert } from "react-bootstrap";
 import { toast } from "react-toastify";
 
 import { apiUrl } from "@utils/globals";
+import { getTimestampDifferenceInSeconds } from "@utils/functions";
 import ShowsList from "@components/ShowsList";
-
-const ShowSearchResults = (searchResultsLast) => (
-  <>
-    <h2>Search results</h2>
-    {searchResultsLast.searchResults.length ? (
-      <ShowsList shows={searchResultsLast.searchResults} />
-    ) : (
-      <Alert variant="light d-inline-flex align-items-center mb-3">
-        <span className="px-2">
-          Sorry, search results empty! &nbsp;
-          <Link to="/">Back to all shows</Link>
-        </span>
-      </Alert>
-    )}
-  </>
-);
+import SearchResults from "@components/SearchResults";
 
 const Homepage = () => {
   const { search } = useLocation();
@@ -42,10 +28,9 @@ const Homepage = () => {
       ? searchResultsAll[searchResultsAll.length - 1]
       : null;
 
-  const timeNow = new Date();
-  const timeLastSearch = new Date(searchResultsLast?.timestamp);
-  const secondsBetweenLastSearch =
-    (timeNow.getTime() - timeLastSearch.getTime()) / 1000;
+  const secondsBetweenLastSearch = getTimestampDifferenceInSeconds(
+    searchResultsLast?.timestamp
+  );
 
   const fetchShows = (page = 0) => {
     fetch(`${apiUrl}/shows?page=${page}`)
@@ -98,7 +83,7 @@ const Homepage = () => {
       )}
 
       {searchResultsLast && secondsBetweenLastSearch < 2 ? (
-        <ShowSearchResults {...searchResultsLast} />
+        <SearchResults searchResults={searchResultsLast.searchResults} />
       ) : (
         <>
           <h2 className="m-0">All shows</h2>

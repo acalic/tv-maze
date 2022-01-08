@@ -14,6 +14,12 @@ export const dateTimeFormat = (oldDate, local = false) => {
   return local ? date.local().format(dtFormat) : date.utc().format(dtFormat);
 };
 
+export const getTimestampDifferenceInSeconds = (targetTimestamp) => {
+  const timeNow = new Date();
+  const timeTarget = new Date(targetTimestamp);
+  return (timeNow.getTime() - timeTarget.getTime()) / 1000;
+};
+
 /* const localStorageShowExists = (show) => {
   let existingEntries = JSON.parse(localStorage.getItem("favoriteShows"));
   if (existingEntries == null) existingEntries = [];
