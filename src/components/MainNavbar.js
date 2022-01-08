@@ -39,9 +39,10 @@ const MainNavbar = () => {
     }
 
     if (inputEl.current.value) {
-      if (inputEl.current.value == searchKeywords[0]) {
-        // Prevent same search
+      if (inputEl.current.value === searchKeywords[0]) {
+        // Prevent same (as last) search
         toast.info("Same search, please change the keyword!");
+        inputEl.current.value = "";
         return;
       }
 

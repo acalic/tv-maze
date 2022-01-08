@@ -80,11 +80,12 @@ const ShowDetails = () => {
           </Button>
         </h1>
         <div className="mb-3 text-light page-show-details-subtitle">
-          <span>Premiered: {showDetails?.premiered?.substr(0, 4)}</span> &bull;
+          <span>Premiered: {showDetails?.premiered?.substr(0, 4)}</span>
           {showDetails?.rating?.average && (
             <span>
               {" "}
-              Average rating: <Rating rating={showDetails.rating.average} />
+              &bull; Average rating:{" "}
+              <Rating rating={showDetails.rating?.average} />
             </span>
           )}
         </div>
