@@ -28,9 +28,12 @@ const MainNavbar = () => {
   const currentPath = location.pathname;
   const searchEnabled = currentPath === "/" ? true : false; // We will show the search only on homepage
 
-  const searchKeywords = searchResultsAll
-    .filter((search) => search.searchKeyword !== "")
-    .map((search) => search.searchKeyword);
+  const searchKeywords =
+    searchResultsAll && searchResultsAll.length
+      ? searchResultsAll
+          .filter((search) => search.searchKeyword !== "")
+          .map((search) => search.searchKeyword)
+      : [];
 
   const inputEl = useRef(null);
 
