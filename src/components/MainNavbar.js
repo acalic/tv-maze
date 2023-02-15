@@ -93,7 +93,7 @@ const MainNavbar = () => {
           className="d-inline-block align-items-center justify-content-center text-primary"
         >
           <FaPhotoVideo />
-          <span className="ml-3 text-white"> KenTechFlix</span>
+          <span className="ml-3 text-white"> TechFlix</span>
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="main-navbar-nav" />
         <Navbar.Collapse id="main-navbar-nav">
